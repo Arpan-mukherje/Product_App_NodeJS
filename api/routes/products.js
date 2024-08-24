@@ -4,9 +4,19 @@ router.get('/', (req, res, next)=> {
     res.status(200).json({message : "this is GET product"})
 });
 
+
 router.post('/', (req, res, next)=> {
-    res.status(200).json({message : "this is POST product"})
+    const ProductJson ={   // data will come in the "req" variable from the Postman
+        name: req.body.name,  // here extracting the data got from body of postman
+        price: req.body.price,
+    }
+
+    res.status(200).json({
+        message : "This is POST product",  // "res" variable will send data to the Frontend(postman)
+        createdProduct  : ProductJson
+    })
 });
+
 
 router.get('/:productId', (req, res, next)=> {
     const id= req.params.productId;
