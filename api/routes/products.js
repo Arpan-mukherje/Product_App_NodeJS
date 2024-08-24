@@ -11,7 +11,7 @@ router.post('/', (req, res, next)=> {
         price: req.body.price,
     }
 
-    res.status(200).json({
+    res.status(201).json({
         message : "This is POST product",  // "res" variable will send data to the Frontend(postman)
         createdProduct  : ProductJson
     })
@@ -27,7 +27,7 @@ router.get('/:productId', (req, res, next)=> {
 
 router.post('/:productId', (req, res, next)=> {
     const id= req.params.productId;
-    res.status(200).json({message : "Product id received",
+    res.status(201).json({message : "Product id received",
         id: id
     })
 });

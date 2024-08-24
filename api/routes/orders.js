@@ -1,6 +1,23 @@
 const express = require('express');
 const router = express.Router();
 
+router.get('/', (req, res, next)=> {
+    res.status(200).json({message : "this is GET Order"})
+});
+
+
+router.post('/', (req, res, next)=> {
+    const OrderJson ={   // data will come in the "req" variable from the Postman
+        productId: req.body.productId,  // here extracting the data got from body of postman
+        quantity: req.body.quantity,
+    }
+
+    res.status(201).json({
+        message : "This is POST Order",  // "res" variable will send data to the Frontend(postman)
+        createdProduct  : OrderJson
+    })
+});
+
 
 router.get('/:orderid', (req, res, next)=> {
     const id= req.params.orderid;
